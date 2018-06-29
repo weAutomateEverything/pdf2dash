@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-	"pdf2HTML/extractPages"
+	"github.com/weAutomateEverything/pdf2dash/extractPages"
 	"fmt"
 	"time"
 	"crypto/md5"
