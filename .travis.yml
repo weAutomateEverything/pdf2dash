@@ -1,16 +1,15 @@
 language: go
-
-sudo: false
 go:
-   - master
+- master
+
+addons:
+  artifacts: true
+sudo: false
+services:
+ - docker
 
 script:
-  - go build
+ - go build
 
-deploy:
-  provider: releases
-  api_key: $OAUTH_TOKEN
-  file: pdf2HTML
-  skip_cleanup: true
-  on:
-    branch: master
+after_success:
+  - bin/docker_push.sh
