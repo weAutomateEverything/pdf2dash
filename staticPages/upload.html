@@ -3,10 +3,33 @@
     <title>Upload file</title>
 </head>
 <body>
-<form enctype="multipart/form-data" action="http://127.0.0.1:3000/uploadFile" method="post">
-    <input type="file" name="uploadfile" />
-    <input type="hidden" name="token" value="{{.}}"/>
-    <input type="submit" value="upload" />
-</form>
+    <div class="formdiv">
+        <form enctype="multipart/form-data" action="http://127.0.0.1:3000/uploadFile" method="post">
+            <input type="file" name="uploadfile" />
+            <input type="hidden" name="token" value="{{.}}"/>
+            <br>
+            <hr>
+            <input type="submit" value="Upload PDF" />
+        </form>
+    </div>
 </body>
+<style>
+    .formdiv {
+        margin: auto;
+        width: 10%;
+        border-radius: 5px;
+        border: 1px solid dodgerblue;
+        background-color: aliceblue;
+        padding: 50px;
+    }
+    input[type=submit] {
+        background-color: dodgerblue;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
 </html>
