@@ -18,6 +18,7 @@ func main() {
 
 	fs := http.FileServer(http.Dir("./staticPages"))
 
+	// Create HTTP server
 	http.Handle("/", fs)
 	http.HandleFunc("/uploadFile", upload)
 
@@ -27,6 +28,7 @@ func main() {
 	http.ListenAndServe(":3000", nil)
 }
 
+// Upload new pdf file
 func upload(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("method:", r.Method)
 	if r.Method == "GET" {

@@ -40,6 +40,7 @@ func ExtractImages(pdf string) {
 	}
 }
 
+// Remove contents of image folder
 func removeContents(dir string) error {
 	d, err := os.Open(dir)
 	if err != nil {
