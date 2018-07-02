@@ -1,23 +1,24 @@
 package main
 
 import (
+	"crypto/md5"
+	"fmt"
+	"github.com/weAutomateEverything/pdf2dash/extractPages"
+	"html/template"
+	"io"
 	"log"
 	"net/http"
-	"github.com/weAutomateEverything/pdf2dash/extractPages"
-	"fmt"
-	"time"
-	"crypto/md5"
-	"io"
-	"strconv"
 	"os"
-	"html/template"
+	"strconv"
+	"time"
 )
 
-func main(){
+func main() {
 	extractPages.ExtractImages("pdfFile.pdf")
 
 	fs := http.FileServer(http.Dir("./staticPages"))
 
+	// Create HTTP server
 	http.Handle("/", fs)
 	http.HandleFunc("/uploadFile", upload)
 
@@ -27,6 +28,7 @@ func main(){
 	http.ListenAndServe(":3000", nil)
 }
 
+// Upload new pdf file
 func upload(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("method:", r.Method)
 	if r.Method == "GET" {
@@ -53,7 +55,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 		}
 		defer f.Close()
 		io.Copy(f, file)
-		os.Rename(f.Name(),"pdfFile.pdf")
+		os.Rename(f.Name(), "pdfFile.pdf")
 
 		extractPages.ExtractImages("pdfFile.pdf")
 	}

@@ -1,14 +1,14 @@
 package extractPages
 
 import (
+	"fmt"
 	"github.com/gen2brain/go-fitz"
+	"image/jpeg"
 	"os"
 	"path/filepath"
-	"fmt"
-	"image/jpeg"
 )
 
-func ExtractImages(pdf string){
+func ExtractImages(pdf string) {
 
 	removeContents("./staticPages/images/")
 
@@ -40,6 +40,7 @@ func ExtractImages(pdf string){
 	}
 }
 
+// Remove contents of image folder
 func removeContents(dir string) error {
 	d, err := os.Open(dir)
 	if err != nil {
