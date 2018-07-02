@@ -1,14 +1,14 @@
 package extractPages
 
 import (
+	"fmt"
 	"github.com/gen2brain/go-fitz"
+	"image/jpeg"
 	"os"
 	"path/filepath"
-	"fmt"
-	"image/jpeg"
 )
 
-func ExtractImages(pdf string){
+func ExtractImages(pdf string) {
 
 	removeContents("./staticPages/images/")
 
