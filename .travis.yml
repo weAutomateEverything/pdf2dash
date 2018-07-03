@@ -4,9 +4,8 @@ go:
 
 env:
   global:
-      - CGO_ENABLED=0
-      - GOOS="linux"
-
+   - GOOS="linux"
+   - GOARCH="amd64"
 addons:
   artifacts: true
 
@@ -14,9 +13,6 @@ sudo: false
 
 services:
  - docker
-
-before_script:
- - go get github.com/gen2brain/go-fitz
 
 script:
  - go build
