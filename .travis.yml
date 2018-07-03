@@ -5,6 +5,7 @@ go:
 env:
   global:
       - CGO_ENABLED=0
+      - GOOS="linux"
 
 addons:
   artifacts: true
