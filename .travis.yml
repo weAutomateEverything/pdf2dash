@@ -2,9 +2,9 @@ language: go
 go:
 - master
 
-env:
-  global:
-      - CGO_ENABLED=0
+#env:
+#  global:
+#      - CGO_ENABLED=0
 addons:
   artifacts: true
 
