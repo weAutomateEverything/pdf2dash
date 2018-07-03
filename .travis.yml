@@ -2,9 +2,15 @@ language: go
 go:
 - master
 
+env:
+  global:
+   - GOOS="linux"
+   - GOARCH="amd64"
 addons:
   artifacts: true
+
 sudo: false
+
 services:
  - docker
 
