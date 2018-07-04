@@ -3,7 +3,6 @@ package main
 import (
 	"crypto/md5"
 	"fmt"
-	"github.com/weAutomateEverything/pdf2dash/extractPages"
 	"html/template"
 	"io"
 	"log"
@@ -11,6 +10,7 @@ import (
 	"os"
 	"strconv"
 	"time"
+	"github.com/weAutomateEverything/pdf2dash/extractPages"
 )
 
 func main() {

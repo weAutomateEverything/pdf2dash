@@ -10,7 +10,9 @@ import (
 
 func ExtractImages(pdf string) error {
 
-	removeContents("./staticPages/images/")
+	if err := removeContents("./staticPages/images/"); err != nil {
+		return err
+	}
 
 	doc, err := fitz.New(pdf)
 	if err != nil {
