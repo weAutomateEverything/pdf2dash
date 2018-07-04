@@ -14,7 +14,10 @@ import (
 )
 
 func main() {
-	extractPages.ExtractImages("pdfFile.pdf")
+	err := extractPages.ExtractImages("pdfFile.pdf")
+	if err != nil {
+		log.Printf("PDF page extraction failed with the following error: %v",err)
+	}
 
 	fs := http.FileServer(http.Dir("./staticPages"))
 
