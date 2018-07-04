@@ -8,13 +8,13 @@ import (
 	"path/filepath"
 )
 
-func ExtractImages(pdf string) {
+func ExtractImages(pdf string) error {
 
 	removeContents("./staticPages/images/")
 
 	doc, err := fitz.New(pdf)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	defer doc.Close()
@@ -23,21 +23,22 @@ func ExtractImages(pdf string) {
 	for n := 0; n < doc.NumPage(); n++ {
 		img, err := doc.Image(n)
 		if err != nil {
-			panic(err)
+			return err
 		}
 
 		f, err := os.Create(filepath.Join("./staticPages/images", fmt.Sprintf("img%03d.jpg", n)))
 		if err != nil {
-			panic(err)
+			return err
 		}
 
 		err = jpeg.Encode(f, img, &jpeg.Options{jpeg.DefaultQuality})
 		if err != nil {
-			panic(err)
+			return  err
 		}
 
 		f.Close()
 	}
+	return nil
 }
 
 // Remove contents of image folder
